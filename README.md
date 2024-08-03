@@ -15,7 +15,7 @@
 
 ## 安裝指南
 
-1. **下載**：從 [釋出頁面](https://github.com/Nickyangtpe/FMinecraftLauncher/releases) 下載最新版本的 FMinecraft Launcher。
+1. **下載**：從 [釋出頁面](https://github.com/Nickyangtpe/FMinecraft-Launcher/releases) 下載最新版本的 FMinecraft Launcher。
 2. **執行安裝程式**：按照安裝程式中的指示完成安裝。
 3. **啟動**：打開 FMinecraft Launcher，配置您的設置和配置檔案，然後開始遊玩 Minecraft！
 
@@ -26,15 +26,15 @@
 
 ## 貢獻
 
-目前此啟動器不接受外部貢獻。如果您有任何建議或反饋，請通過 [GitHub 問題頁面](https://github.com/Nickyangtpe/FMinecraftLauncher/issues) 提交。
+目前此啟動器不接受外部貢獻。如果您有任何建議或反饋，請通過 [GitHub 問題頁面](https://github.com/Nickyangtpe/FMinecraft-Launcher/issues) 提交。
 
 ## 授權
 
-FMinecraft Launcher 是免費提供的，但不開源。請參見 [授權說明](https://github.com/Nickyangtpe/FMinecraftLauncher/blob/main/LICENSE) 獲取更多詳細信息。
+FMinecraft Launcher 是免費提供的，但不開源。請參見 [授權說明](https://github.com/Nickyangtpe/FMinecraft-Launcher/blob/main/LICENSE) 獲取更多詳細信息。
 
 ## 聯繫我們
 
-如需任何查詢或支援，請通過 [Nick.yang.tpe@gmail.com](nick.yang.tpe@gmail.com) 聯繫我們，或在 [GitHub 存儲庫](https://github.com/Nickyangtpe/FMinecraftLauncher) 上開啟問題。
+如需任何查詢或支援，請通過 [Nick.yang.tpe@gmail.com](nick.yang.tpe@gmail.com) 聯繫我們，或在 [GitHub 存儲庫](https://github.com/Nickyangtpe/FMinecraft-Launcher) 上開啟問題。
 
 ---
 BY CHATGPT :)
