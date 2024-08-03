@@ -34,7 +34,7 @@ FMinecraft Launcher 是免費提供的，但不開源。請參見 [授權說明]
 
 ## 聯繫我們
 
-如需任何查詢或支援，請通過 [Nick.yang.tpe@gmail.com](nick.yang.tpe@gmail.com) 聯繫我們，或在 [GitHub 存儲庫](https://github.com/Nickyangtpe/FMinecraft-Launcher) 上開啟問題。
+如需任何查詢或支援，請通過 Nick.yang.tpe@gmail.com 聯繫我們，或在 [GitHub 存儲庫](https://github.com/Nickyangtpe/FMinecraft-Launcher) 上開啟問題。
 
 ---
 BY CHATGPT :)
