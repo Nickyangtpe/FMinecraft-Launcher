@@ -40,6 +40,7 @@ namespace FMinecraft_Installer
             {
                 MessageBox.Show("網路連接失敗，請檢查您的網絡連接。", "網絡錯誤", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Log("Internet connection failed.");
+                downloading = false;
                 Application.Exit();
                 return;
             }
