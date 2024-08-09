@@ -77,30 +77,43 @@ namespace FMinecraft_Installer
                 progressBar1.Maximum = files.Length + directories.Length;
                 progressBar1.Value = 0;
 
+
+                // 關閉所有 FMinecraft Launcher.exe 進程
+                CloseRunningProcesses("FMinecraft Launcher.exe");
+
+                await Task.Delay(200);
+
+
                 label3.Text = "移除過時檔案";
                 Update();
 
-                // Remove all files and folders asynchronously
+                // Remove all files and folders asynchronously, except for those in the .minecraft folder
                 await Task.Run(() =>
                 {
                     foreach (string file in files)
                     {
-                        File.Delete(file);
-                        Invoke(new Action(() => {
-                            progressBar1.Value++;
-                            label2.Text = $"{(int)((progressBar1.Value * 1.0 / progressBar1.Maximum) * 100)}%";
-                            Update();
-                        }));
+                        if (!file.Contains(".minecraft"))
+                        {
+                            File.Delete(file);
+                            Invoke(new Action(() => {
+                                progressBar1.Value++;
+                                label2.Text = $"{(int)((progressBar1.Value * 1.0 / progressBar1.Maximum) * 100)}%";
+                                Update();
+                            }));
+                        }
                     }
 
                     foreach (string directory in directories)
                     {
-                        DeleteDirectory(directory);
-                        Invoke(new Action(() => {
-                            progressBar1.Value++;
-                            label2.Text = $"{(int)((progressBar1.Value * 1.0 / progressBar1.Maximum) * 100)}%";
-                            Update();
-                        }));
+                        if (!directory.Contains(".minecraft"))
+                        {
+                            DeleteDirectory(directory);
+                            Invoke(new Action(() => {
+                                progressBar1.Value++;
+                                label2.Text = $"{(int)((progressBar1.Value * 1.0 / progressBar1.Maximum) * 100)}%";
+                                Update();
+                            }));
+                        }
                     }
 
                 });
@@ -135,6 +148,25 @@ namespace FMinecraft_Installer
                 label3.Text = "創建快捷";
                 Update();
 
+                byte[] APP = Properties.Resources.FMinecraft_App_Registrar;
+                File.WriteAllBytes(Path.Combine(roamingFolder, "FMinecraft Launcher", "FMinecraft App Registrar.exe"), APP);
+
+                byte[] uninstall = Properties.Resources.Uninstall_FMinecraft_Launcher;
+                File.WriteAllBytes(Path.Combine(roamingFolder, "FMinecraft Launcher", "uninstall FMinecraft Launcher.exe"), uninstall);
+
+                string workingDirectory = Path.Combine(roamingFolder, "FMinecraft Launcher");
+
+                // 創建 ProcessStartInfo 物件
+                ProcessStartInfo startInfo = new ProcessStartInfo
+                {
+                    FileName = Path.Combine(roamingFolder, "FMinecraft Launcher", "FMinecraft App Registrar.exe"),
+                    WorkingDirectory = workingDirectory,
+                    UseShellExecute = true // 設定為 true 使用 Windows Shell 來啟動進程
+                };
+
+                Process.Start(startInfo);
+                
+
                 // Create a desktop shortcut for the application
                 CreateShortcut("FMinecraft Launcher", FMinecraft_Launcher_FilePath, customFolder);
 
@@ -159,6 +191,24 @@ namespace FMinecraft_Installer
             BringToFront();
             TopMost = true;
             TopMost = false;
+        }
+
+
+
+        private void CloseRunningProcesses(string processName)
+        {
+            var processes = Process.GetProcessesByName(Path.GetFileNameWithoutExtension(processName));
+            foreach (var process in processes)
+            {
+                try
+                {
+                    process.Kill();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"無法關閉進程 {process.ProcessName}: {ex.Message}");
+                }
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

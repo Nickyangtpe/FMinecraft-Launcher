@@ -63,9 +63,29 @@ namespace FMinecraft_Installer.Properties {
         /// <summary>
         ///   查詢類型 System.Byte[] 的當地語系化資源。
         /// </summary>
+        internal static byte[] FMinecraft_App_Registrar {
+            get {
+                object obj = ResourceManager.GetObject("FMinecraft_App_Registrar", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Byte[] 的當地語系化資源。
+        /// </summary>
         internal static byte[] FMinecraft_Launcher_exe {
             get {
                 object obj = ResourceManager.GetObject("FMinecraft_Launcher_exe", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Byte[] 的當地語系化資源。
+        /// </summary>
+        internal static byte[] Uninstall_FMinecraft_Launcher {
+            get {
+                object obj = ResourceManager.GetObject("Uninstall_FMinecraft_Launcher", resourceCulture);
                 return ((byte[])(obj));
             }
         }
