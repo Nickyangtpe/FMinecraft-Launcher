@@ -34,5 +34,5 @@ using System.Runtime.InteropServices;
 // 設為預設，如下所示:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.4")]
+[assembly: AssemblyFileVersion("1.0.0.6")]
 [assembly: NeutralResourcesLanguage("zh-TW")]

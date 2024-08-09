@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Uninstall_FMinecraft_Launcher
@@ -13,10 +14,15 @@ namespace Uninstall_FMinecraft_Launcher
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private async void Form1_Load(object sender, EventArgs e)
         {
             try
             {
+                // 關閉所有 FMinecraft Launcher.exe 進程
+                CloseRunningProcesses("FMinecraft Launcher.exe");
+
+                await Task.Delay(200);
+
                 string roamingFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
                 // 获取当前应用程序的路径
                 string appPath = Path.GetFullPath(Path.Combine(roamingFolder, "FMinecraft Launcher", "FMinecraft Launcher.exe"));
@@ -59,6 +65,23 @@ namespace Uninstall_FMinecraft_Launcher
             if (File.Exists(shortcutPath))
             {
                 File.Delete(shortcutPath);
+            }
+        }
+
+
+        private void CloseRunningProcesses(string processName)
+        {
+            var processes = Process.GetProcessesByName(Path.GetFileNameWithoutExtension(processName));
+            foreach (var process in processes)
+            {
+                try
+                {
+                    process.Kill();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"無法關閉進程 {process.ProcessName}: {ex.Message}");
+                }
             }
         }
 
