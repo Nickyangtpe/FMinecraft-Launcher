@@ -20,7 +20,7 @@ namespace FMinecraft_Updater
         private async void Form1_Load(object sender, EventArgs e)
         {
             label1.Text = "Checking version";
-            string url = "https://raw.githubusercontent.com/Nickyangtpe/FMinecraft-Launcher/FMinecraftInstaller-1.0.0.4/FMinecraft%20Launcher/last-version.json";
+            string url = "https://github.com/Nickyangtpe/FMinecraft-Launcher/raw/main/FMinecraft%20Launcher/last-version.json";
 
             using (HttpClient client = new HttpClient())
             {
