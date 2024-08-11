@@ -1,0 +1,13 @@
+C:\Users\nick yang2\source\repos\FMinecraft Updater\FMinecraft Updater\bin\Debug\FMinecraft Updater.exe.config
+C:\Users\nick yang2\source\repos\FMinecraft Updater\FMinecraft Updater\bin\Debug\FMinecraft Updater.exe
+C:\Users\nick yang2\source\repos\FMinecraft Updater\FMinecraft Updater\bin\Debug\FMinecraft Updater.pdb
+C:\Users\nick yang2\source\repos\FMinecraft Updater\FMinecraft Updater\obj\Debug\FMinecraft Updater.csproj.AssemblyReference.cache
+C:\Users\nick yang2\source\repos\FMinecraft Updater\FMinecraft Updater\obj\Debug\FMinecraft_Updater.Form1.resources
+C:\Users\nick yang2\source\repos\FMinecraft Updater\FMinecraft Updater\obj\Debug\FMinecraft_Updater.Properties.Resources.resources
+C:\Users\nick yang2\source\repos\FMinecraft Updater\FMinecraft Updater\obj\Debug\FMinecraft Updater.csproj.GenerateResource.cache
+C:\Users\nick yang2\source\repos\FMinecraft Updater\FMinecraft Updater\obj\Debug\FMinecraft Updater.csproj.CoreCompileInputs.cache
+C:\Users\nick yang2\source\repos\FMinecraft Updater\FMinecraft Updater\obj\Debug\FMinecraft Updater.exe
+C:\Users\nick yang2\source\repos\FMinecraft Updater\FMinecraft Updater\obj\Debug\FMinecraft Updater.pdb
+C:\Users\nick yang2\source\repos\FMinecraft Updater\FMinecraft Updater\bin\Debug\Newtonsoft.Json.dll
+C:\Users\nick yang2\source\repos\FMinecraft Updater\FMinecraft Updater\bin\Debug\Newtonsoft.Json.xml
+C:\Users\nick yang2\source\repos\FMinecraft Updater\FMinecraft Updater\obj\Debug\FMinecraft Updater.csproj.CopyComplete
