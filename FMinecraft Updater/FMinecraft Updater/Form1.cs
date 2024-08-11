@@ -75,7 +75,10 @@ namespace FMinecraft_Updater
 
                         await Task.Delay(500);
 
-                        Process.Start(Path.GetFullPath("FMinecraft Launcher.exe"));
+                        Hide();
+
+                        Process.Start("FMinecraft App Registrar.exe").WaitForExit();
+
                         isFinish = true;
                         Application.Exit();
                     }
@@ -87,10 +90,16 @@ namespace FMinecraft_Updater
                 }
                 catch (Exception ex)
                 {
+                    Process.Start(Path.GetFullPath("FMinecraft Launcher.exe"));
                     isFinish = true;
                     Clipboard.SetText(ex.Message);
                     Application.Exit();
                 }
+
+                await Task.Delay(500);
+
+                Process.Start(Path.GetFullPath("FMinecraft Launcher.exe"));
+
             }
         }
 
