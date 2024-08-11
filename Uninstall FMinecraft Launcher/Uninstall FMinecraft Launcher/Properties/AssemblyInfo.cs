@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Uninstall FMinecraft Launcher")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("HP Inc.")]
+[assembly: AssemblyCompany("BriefBassoon117")]
 [assembly: AssemblyProduct("Uninstall FMinecraft Launcher")]
-[assembly: AssemblyCopyright("Copyright © HP Inc. 2024")]
+[assembly: AssemblyCopyright("Copyright © FMinecraft 2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
