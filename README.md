@@ -4,6 +4,8 @@
 
 ## 概述
 
+![ar6t7-f5h95-001](https://github.com/user-attachments/assets/61082c06-1f40-4247-9a80-f435ad7af6b6)
+
 **FMinecraft Launcher** 是一款免費的 Minecraft Java Edition 啟動器，提供簡化和客製化的功能，讓玩家可以更輕鬆地管理和啟動 Minecraft。雖然這款啟動器不開源，但我們致力於提供穩定和高效的使用體驗。
 
 ## 主要功能
