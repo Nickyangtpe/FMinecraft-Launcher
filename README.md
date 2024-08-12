@@ -47,5 +47,9 @@ FMinecraft Launcher 是免費提供的，但不開源。請參見 [授權說明]
 
 ![image](https://github.com/user-attachments/assets/3a65bbb0-e5fd-4795-a5e1-2f0abd642c12)
 
+![image](https://github.com/user-attachments/assets/b69526e4-f21e-4c8f-a147-a2cffbcde014)
+
+![image](https://github.com/user-attachments/assets/e5d30689-658d-4504-8727-144aafec1168)
+
 ---
 BY CHATGPT :)
