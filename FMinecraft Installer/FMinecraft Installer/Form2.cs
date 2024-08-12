@@ -215,11 +215,19 @@ namespace FMinecraft_Installer
         {
             Hide();
             Thread.Sleep(500);
-            Process.Start(new ProcessStartInfo
+
+            string roamingFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string workingDirectory = Path.Combine(roamingFolder, "FMinecraft Launcher");
+
+            // 創建 ProcessStartInfo 物件
+            ProcessStartInfo startInfo = new ProcessStartInfo
             {
-                FileName = FMinecraft_Launcher_FilePath,
-                WorkingDirectory = Path.GetDirectoryName(FMinecraft_Launcher_FilePath)
-            });
+                FileName = Path.Combine(roamingFolder, "FMinecraft Launcher", "FMinecraft Launcher.exe"),
+                WorkingDirectory = workingDirectory,
+                UseShellExecute = true // 設定為 true 使用 Windows Shell 來啟動進程
+            };
+
+            Process.Start(startInfo);
             Application.Exit();
         }
 
