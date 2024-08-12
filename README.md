@@ -12,7 +12,6 @@
 ## 主要功能
 ![螢幕擷取畫面 2024-08-12 164514](https://github.com/user-attachments/assets/20f2c0c8-0c11-46db-aadc-067b6cc42aee)
 
-
 - **版本管理**：輕鬆下載和管理不同版本的 Minecraft，支持多版本和模組配置。
 - **可客製化的配置**：創建和管理多個配置檔案，適用於不同的 Minecraft 設置，包括模組版和原版。
 - **自動更新**：隨時保持啟動器和 Minecraft 版本的最新狀態，無需手動更新。
@@ -41,6 +40,12 @@ FMinecraft Launcher 是免費提供的，但不開源。請參見 [授權說明]
 ## 聯繫我們
 
 如需任何查詢或支援，請通過 Nick.yang.tpe@gmail.com 聯繫我們，或在 [GitHub 存儲庫](https://github.com/Nickyangtpe/FMinecraft-Launcher) 上開啟問題。
+
+## 其他
+
+![螢幕擷取畫面 2024-08-12 164606](https://github.com/user-attachments/assets/7262397d-6083-42d8-84f1-24e54c8ff936)
+
+![image](https://github.com/user-attachments/assets/3a65bbb0-e5fd-4795-a5e1-2f0abd642c12)
 
 ---
 BY CHATGPT :)
