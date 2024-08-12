@@ -10,7 +10,7 @@
 **FMinecraft Launcher** 是一款免費的 Minecraft Java Edition 啟動器，提供簡化和客製化的功能，讓玩家可以更輕鬆地管理和啟動 Minecraft。雖然這款啟動器不開源，但我們致力於提供穩定和高效的使用體驗。
 
 ## 主要功能
-![螢幕擷取畫面 2024-08-12 164032](https://github.com/user-attachments/assets/4bb46cd6-5d08-4170-9d8b-9b1346d399f8)
+
 
 - **版本管理**：輕鬆下載和管理不同版本的 Minecraft，支持多版本和模組配置。
 - **可客製化的配置**：創建和管理多個配置檔案，適用於不同的 Minecraft 設置，包括模組版和原版。
@@ -18,6 +18,7 @@
 - **用戶友好介面**：直觀易用的介面，提升您的遊戲體驗。
 
 ## 安裝指南
+![螢幕擷取畫面 2024-08-12 164430](https://github.com/user-attachments/assets/da0e810f-36fd-4237-aa59-4e863b472056)
 
 1. **下載**：從 [釋出頁面](https://github.com/Nickyangtpe/FMinecraft-Launcher/releases) 下載最新版本的 FMinecraft Launcher。
 2. **執行安裝程式**：按照安裝程式中的指示完成安裝。
