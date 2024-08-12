@@ -146,7 +146,14 @@ namespace FMinecraft_Updater
 
                     foreach (var entry in archive.Entries)
                     {
+                        // 如果文件名是 "Newtonsoft.Json.dll"，则跳过
+                        if (entry.FullName.Equals("Newtonsoft.Json.dll", StringComparison.OrdinalIgnoreCase))
+                        {
+                            continue;
+                        }
+
                         string entryPath = Path.Combine(extractPath, entry.FullName);
+
                         if (entry.FullName.EndsWith("/"))
                         {
                             Directory.CreateDirectory(entryPath);
@@ -156,6 +163,7 @@ namespace FMinecraft_Updater
                             Directory.CreateDirectory(Path.GetDirectoryName(entryPath));
                             entry.ExtractToFile(entryPath, overwrite: true);
                         }
+
                         processedEntries++;
                         int progressPercentage = (int)((processedEntries * 100) / totalEntries);
                         UpdateProgressBar(progressPercentage);

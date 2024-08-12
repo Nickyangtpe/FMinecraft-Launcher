@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using IWshRuntimeLibrary;
+using File = System.IO.File;
 
 namespace FMinecraft_App_Registrar
 {
@@ -20,8 +21,7 @@ namespace FMinecraft_App_Registrar
             {
                 // 获取当前应用程序的路径
                 string appPath = Path.GetFullPath("FMinecraft Launcher.exe");
-
-                string unainstallPath = Path.GetFullPath("uninstall FMinecraft Launcher.exe");
+                string uninstallPath = Path.GetFullPath("uninstall FMinecraft Launcher.exe");
 
                 // 应用程序名称
                 string appName = "FMinecraft Launcher";
@@ -39,26 +39,46 @@ namespace FMinecraft_App_Registrar
                 long fileSize = new FileInfo(appPath).Length / 1024;
 
                 // 注册表路径
-                string registryPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\" + appName;
-
-                // 创建注册表项
-                using (RegistryKey key = Registry.LocalMachine.CreateSubKey(registryPath))
+                string uninstallRegistryPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\" + appName;
+                string appPathsRegistryPath1 = @"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\" + Path.GetFileName(appPath);
+                string appPathsRegistryPath2 = @"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\" + "FML";
+                string appPathsRegistryPath3 = @"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\" + "FMC";
+                // 创建卸载信息注册表项
+                using (RegistryKey uninstallKey = Registry.LocalMachine.CreateSubKey(uninstallRegistryPath))
                 {
-                    key.SetValue("DisplayName", $"{appName}");
-                    key.SetValue("DisplayVersion", $"{version}");
-                    key.SetValue("Publisher", $"{publisher}");
-                    key.SetValue("InstallLocation", $"\"{installLocation}\"");
-                    key.SetValue("UninstallString", $"\"{unainstallPath}\"");
-                    key.SetValue("DisplayIcon", $"{appPath}");
-                    key.SetValue("NoModify", 1);
-                    key.SetValue("NoRepair", 1);
-                    key.SetValue("EstimatedSize", fileSize); // 单位为 KB
+                    uninstallKey.SetValue("DisplayName", appName);
+                    uninstallKey.SetValue("DisplayVersion", version);
+                    uninstallKey.SetValue("Publisher", publisher);
+                    uninstallKey.SetValue("InstallLocation", $"\"{installLocation}\"");
+                    uninstallKey.SetValue("UninstallString", $"\"{uninstallPath}\"");
+                    uninstallKey.SetValue("DisplayIcon", appPath);
+                    uninstallKey.SetValue("NoModify", 1);
+                    uninstallKey.SetValue("NoRepair", 1);
+                    uninstallKey.SetValue("EstimatedSize", fileSize); // 单位为 KB
+                }
+                string roamingFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                // 创建应用程序路径注册表项
+                using (RegistryKey appPathsKey = Registry.LocalMachine.CreateSubKey(appPathsRegistryPath1))
+                {
+                    appPathsKey.SetValue("", Path.Combine(Path.GetDirectoryName(appPath),"FML.exe"));
+                }
+                // 创建应用程序路径注册表项
+                using (RegistryKey appPathsKey = Registry.LocalMachine.CreateSubKey(appPathsRegistryPath2))
+                {
+                    appPathsKey.SetValue("", Path.Combine(Path.GetDirectoryName(appPath), "FML.exe"));
+                }
+                // 创建应用程序路径注册表项
+                using (RegistryKey appPathsKey = Registry.LocalMachine.CreateSubKey(appPathsRegistryPath3))
+                {
+                    appPathsKey.SetValue("", Path.Combine(Path.GetDirectoryName(appPath), "FML.exe"));
                 }
 
-                // 创建快捷方式路径
+                byte[] FML = Properties.Resources.FML;
+                File.WriteAllBytes(Path.Combine(roamingFolder, "FMinecraft Launcher", "FML.exe"), FML);
+
+                // 创建快捷方式
                 CreateShortcut(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonPrograms), "FMinecraft Launcher.lnk"));
                 CreateShortcut(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.StartMenu), "Programs", "FMinecraft Launcher.lnk"));
-
             }
             catch
             {
