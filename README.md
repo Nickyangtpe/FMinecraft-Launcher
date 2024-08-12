@@ -1,5 +1,5 @@
 # FMinecraft Launcher
-![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/Nickyangtpe/FMinecraft-Launcher/total)![GitHub Release](https://img.shields.io/github/v/release/Nickyangtpe/FMinecraft-Launcher)
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/Nickyangtpe/FMinecraft-Launcher/total)  ![GitHub Release](https://img.shields.io/github/v/release/Nickyangtpe/FMinecraft-Launcher)
 
 
 歡迎使用 **FMinecraft Launcher** — 一款專為 Minecraft Java Edition 設計的免費啟動器，旨在簡化並提升您的遊戲體驗！
