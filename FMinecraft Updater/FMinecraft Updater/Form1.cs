@@ -146,12 +146,6 @@ namespace FMinecraft_Updater
 
                     foreach (var entry in archive.Entries)
                     {
-                        // 如果文件名是 "Newtonsoft.Json.dll"，则跳过
-                        if (entry.FullName.Equals("Newtonsoft.Json.dll", StringComparison.OrdinalIgnoreCase))
-                        {
-                            continue;
-                        }
-
                         string entryPath = Path.Combine(extractPath, entry.FullName);
 
                         if (entry.FullName.EndsWith("/"))
@@ -178,6 +172,13 @@ namespace FMinecraft_Updater
             foreach (var file in Directory.GetFiles(newFilesPath))
             {
                 string fileName = Path.GetFileName(file);
+
+                // 跳過替換 Newtonsoft.Json.dll
+                if (fileName.Equals("Newtonsoft.Json.dll", StringComparison.OrdinalIgnoreCase))
+                {
+                    continue;
+                }
+
                 string destinationPath = Path.Combine(Path.GetDirectoryName(originalFilePath), fileName);
 
                 // 如果目標檔案已存在，則刪除
@@ -190,6 +191,7 @@ namespace FMinecraft_Updater
                 File.Move(file, destinationPath);
             }
         }
+
 
         private void CloseRunningProcesses(string processName)
         {
