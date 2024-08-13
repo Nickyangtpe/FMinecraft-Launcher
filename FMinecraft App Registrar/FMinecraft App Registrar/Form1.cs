@@ -41,8 +41,8 @@ namespace FMinecraft_App_Registrar
                 // 注册表路径
                 string uninstallRegistryPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\" + appName;
                 string appPathsRegistryPath1 = @"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\" + Path.GetFileName(appPath);
-                string appPathsRegistryPath2 = @"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\" + "FML";
-                string appPathsRegistryPath3 = @"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\" + "FMC";
+                string appPathsRegistryPath2 = @"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\" + "FML.exe";
+                string appPathsRegistryPath3 = @"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\" + "FMC.exe";
                 // 创建卸载信息注册表项
                 using (RegistryKey uninstallKey = Registry.LocalMachine.CreateSubKey(uninstallRegistryPath))
                 {

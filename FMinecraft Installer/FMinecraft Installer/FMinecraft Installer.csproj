@@ -132,8 +132,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="arc6x-cgvcv-001.ico" />
-    <None Include="Resources\Uninstall FMinecraft Launcher.exe" />
     <None Include="Resources\FMinecraft App Registrar.exe" />
+    <None Include="Resources\Uninstall FMinecraft Launcher.exe" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
