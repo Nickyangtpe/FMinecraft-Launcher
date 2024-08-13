@@ -50,6 +50,16 @@ namespace Uninstall_FMinecraft_Launcher
                     }
                 }
 
+                // 删除其他指定的注册表项
+                string appPathsRegistryPath1 = @"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\" + Path.GetFileName(appPath);
+                string appPathsRegistryPath2 = @"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\FML.exe";
+                string appPathsRegistryPath3 = @"SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\FMC.exe";
+
+                DeleteRegistryKey(appPathsRegistryPath1);
+                DeleteRegistryKey(appPathsRegistryPath2);
+                DeleteRegistryKey(appPathsRegistryPath3);
+
+
                 // 在完成所有操作后删除自身
                 ScheduleSelfDeletion(installLocation);
             }
@@ -65,6 +75,24 @@ namespace Uninstall_FMinecraft_Launcher
             if (File.Exists(shortcutPath))
             {
                 File.Delete(shortcutPath);
+            }
+        }
+
+        private void DeleteRegistryKey(string registryPath)
+        {
+            try
+            {
+                using (RegistryKey key = Registry.LocalMachine.OpenSubKey(registryPath, true))
+                {
+                    if (key != null)
+                    {
+                        Registry.LocalMachine.DeleteSubKeyTree(registryPath);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"無法刪除註冊表項 {registryPath}: {ex.Message}");
             }
         }
 
