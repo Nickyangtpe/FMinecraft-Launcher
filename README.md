@@ -1,4 +1,7 @@
 # FMinecraft Launcher
+
+![picture](https://cdn.discordapp.com/attachments/1231589164793856020/1274441984789975071/IMG_3525.png.jpg?ex=66c24417&is=66c0f297&hm=fb6f52f36ca29ccceabdff7caa7ba1a63f58bfd10217a4bff6784ecd5fc3aca1&)
+
 ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/Nickyangtpe/FMinecraft-Launcher/total)  ![GitHub Release](https://img.shields.io/github/v/release/Nickyangtpe/FMinecraft-Launcher)
 
 
