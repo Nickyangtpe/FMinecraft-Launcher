@@ -12,6 +12,8 @@ namespace FMinecraft_Updater
 {
     public partial class Form1 : Form
     {
+        private bool isFinish = false;
+
         public Form1()
         {
             InitializeComponent();
@@ -22,113 +24,109 @@ namespace FMinecraft_Updater
             label1.Text = "Checking version";
             string url = "https://github.com/Nickyangtpe/FMinecraft-Launcher/raw/main/FMinecraft%20Launcher/last-version.json";
 
-            using (HttpClient client = new HttpClient())
+            try
             {
-                try
+                VersionInfo newVersionInfo = await FetchVersionInfoAsync(url);
+                Version currentVersion = GetCurrentVersion();
+                Version latestVersion = new Version(newVersionInfo.Version);
+
+                if (currentVersion.CompareTo(latestVersion) < 0)
                 {
-                    HttpResponseMessage response = await client.GetAsync(url);
-                    response.EnsureSuccessStatusCode();
-                    string jsonString = await response.Content.ReadAsStringAsync();
-
-                    VersionInfo newVersionInfo = JsonConvert.DeserializeObject<VersionInfo>(jsonString);
-                    Console.WriteLine($"New Version: {newVersionInfo.Version}");
-                    Console.WriteLine($"URL: {newVersionInfo.Url}");
-
-                    string filePath = Path.GetFullPath(@"FMinecraft Launcher.exe");
-                    FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(filePath);
-                    Console.WriteLine("File Version: " + fileVersionInfo.FileVersion);
-
-                    Version currentVersion = new Version(fileVersionInfo.FileVersion);
-                    Version latestVersion = new Version(newVersionInfo.Version);
-
-                    int comparison = currentVersion.CompareTo(latestVersion);
-
-                    if (comparison < 0)
-                    {
-                        label1.Text = "Downloading the latest version";
-                        string downloadUrl = newVersionInfo.Url;
-                        string downloadPath = Path.Combine(Path.GetTempPath(), "update.zip");
-
-                        // 下載檔案並更新進度條
-                        await DownloadFileAsync(downloadUrl, downloadPath);
-
-                        label1.Text = "Decompressing version archive";
-
-                        // 解壓縮檔案並更新進度條
-                        string extractPath = Path.Combine(Path.GetTempPath(), "update");
-                        Directory.CreateDirectory(extractPath);
-                        await ExtractZipFileAsync(downloadPath, extractPath);
-
-                        label1.Text = "Closing process";
-
-                        // 關閉所有 FMinecraft Launcher.exe 進程
-                        CloseRunningProcesses("FMinecraft Launcher.exe");
-
-                        await Task.Delay(200);
-
-                        label1.Text = "Replace obsolete files";
-                        // 替換原本檔案
-                        ReplaceOldFiles(filePath, extractPath);
-
-                        File.Delete(downloadPath);
-                        Directory.Delete(extractPath, true);
-
-                        await Task.Delay(500);
-
-                        Hide();
-
-                        Process.Start("FMinecraft App Registrar.exe").WaitForExit();
-
-                        isFinish = true;
-                        Application.Exit();
-                    }
-                    else
-                    {
-                        isFinish = true;
-                        Application.Exit();
-                    }
+                    await UpdateApplicationAsync(newVersionInfo);
                 }
-                catch (Exception ex)
+                else
                 {
-                    Process.Start(Path.GetFullPath("FMinecraft Launcher.exe"));
-                    isFinish = true;
-                    Clipboard.SetText(ex.Message);
-                    Application.Exit();
+                    ExitApplication();
                 }
-
-                await Task.Delay(500);
-
-                Process.Start(Path.GetFullPath("FMinecraft Launcher.exe"));
-
+            }
+            catch (Exception ex)
+            {
+                HandleException(ex);
             }
         }
 
-        bool isFinish = false;
+        private async Task<VersionInfo> FetchVersionInfoAsync(string url)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                HttpResponseMessage response = await client.GetAsync(url);
+                response.EnsureSuccessStatusCode();
+                string jsonString = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<VersionInfo>(jsonString);
+            }
+        }
+
+        private Version GetCurrentVersion()
+        {
+            string filePath = Path.GetFullPath(@"FMinecraft Launcher.exe");
+            FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(filePath);
+            return new Version(fileVersionInfo.FileVersion);
+        }
+
+        private async Task UpdateApplicationAsync(VersionInfo newVersionInfo)
+        {
+            label1.Text = "Downloading the latest version";
+            string downloadUrl = newVersionInfo.Url;
+            string downloadPath = Path.Combine(Path.GetTempPath(), "update.zip");
+
+            await DownloadFileAsync(downloadUrl, downloadPath);
+
+            label1.Text = "Decompressing version archive";
+            string extractPath = Path.Combine(Path.GetTempPath(), "update");
+            Directory.CreateDirectory(extractPath);
+            await ExtractZipFileAsync(downloadPath, extractPath);
+
+            label1.Text = "Closing process";
+            CloseRunningProcesses("FMinecraft Launcher.exe");
+
+            label1.Text = "Replacing obsolete files";
+            string filePath = Path.GetFullPath(@"FMinecraft Launcher.exe");
+            ReplaceOldFiles(filePath, extractPath);
+
+            File.Delete(downloadPath);
+            Directory.Delete(extractPath, true);
+
+            Hide();
+            Process.Start(Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "FMinecraft App Registrar.exe")).WaitForExit();
+
+            ExitApplication();
+        }
+
+        private void ExitApplication()
+        {
+            isFinish = true;
+            Application.Exit();
+        }
+
+        private void HandleException(Exception ex)
+        {
+            Process.Start(Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "FMinecraft Launcher.exe"));
+            isFinish = true;
+            Clipboard.SetText(ex.Message);
+            Application.Exit();
+        }
 
         private async Task DownloadFileAsync(string url, string destinationPath)
         {
             using (HttpClient client = new HttpClient())
+            using (HttpResponseMessage response = await client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead))
             {
-                using (HttpResponseMessage response = await client.GetAsync(url, HttpCompletionOption.ResponseHeadersRead))
+                response.EnsureSuccessStatusCode();
+                long totalBytes = response.Content.Headers.ContentLength ?? -1;
+                using (Stream contentStream = await response.Content.ReadAsStreamAsync(),
+                    fileStream = new FileStream(destinationPath, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true))
                 {
-                    response.EnsureSuccessStatusCode();
-                    long totalBytes = response.Content.Headers.ContentLength ?? -1;
-                    using (Stream contentStream = await response.Content.ReadAsStreamAsync(),
-                        fileStream = new FileStream(destinationPath, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true))
-                    {
-                        byte[] buffer = new byte[8192];
-                        int bytesRead;
-                        long totalBytesRead = 0;
+                    byte[] buffer = new byte[8192];
+                    int bytesRead;
+                    long totalBytesRead = 0;
 
-                        while ((bytesRead = await contentStream.ReadAsync(buffer, 0, buffer.Length)) > 0)
+                    while ((bytesRead = await contentStream.ReadAsync(buffer, 0, buffer.Length)) > 0)
+                    {
+                        await fileStream.WriteAsync(buffer, 0, bytesRead);
+                        totalBytesRead += bytesRead;
+                        if (totalBytes > 0)
                         {
-                            await fileStream.WriteAsync(buffer, 0, bytesRead);
-                            totalBytesRead += bytesRead;
-                            if (totalBytes > 0)
-                            {
-                                int progressPercentage = (int)((totalBytesRead * 100) / totalBytes);
-                                UpdateProgressBar(progressPercentage);
-                            }
+                            UpdateProgressBar((int)((totalBytesRead * 100) / totalBytes));
                         }
                     }
                 }
@@ -159,8 +157,7 @@ namespace FMinecraft_Updater
                         }
 
                         processedEntries++;
-                        int progressPercentage = (int)((processedEntries * 100) / totalEntries);
-                        UpdateProgressBar(progressPercentage);
+                        UpdateProgressBar((int)((processedEntries * 100) / totalEntries));
                     }
                 }
             });
@@ -168,12 +165,10 @@ namespace FMinecraft_Updater
 
         private void ReplaceOldFiles(string originalFilePath, string newFilesPath)
         {
-            // 將解壓縮的檔案替換原本的檔案
             foreach (var file in Directory.GetFiles(newFilesPath))
             {
                 string fileName = Path.GetFileName(file);
 
-                // 跳過替換 Newtonsoft.Json.dll
                 if (fileName.Equals("Newtonsoft.Json.dll", StringComparison.OrdinalIgnoreCase))
                 {
                     continue;
@@ -181,17 +176,14 @@ namespace FMinecraft_Updater
 
                 string destinationPath = Path.Combine(Path.GetDirectoryName(originalFilePath), fileName);
 
-                // 如果目標檔案已存在，則刪除
                 if (File.Exists(destinationPath))
                 {
                     File.Delete(destinationPath);
                 }
 
-                // 移動新檔案到原本的路徑
                 File.Move(file, destinationPath);
             }
         }
-
 
         private void CloseRunningProcesses(string processName)
         {
