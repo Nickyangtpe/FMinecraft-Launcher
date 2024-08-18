@@ -23,6 +23,7 @@ namespace FMinecraft_Updater
         {
             label1.Text = "Checking version";
             string url = "https://github.com/Nickyangtpe/FMinecraft-Launcher/raw/main/FMinecraft%20Launcher/last-version.json";
+            string[] arguments = Environment.GetCommandLineArgs();
 
             try
             {
@@ -30,8 +31,10 @@ namespace FMinecraft_Updater
                 Version currentVersion = GetCurrentVersion();
                 Version latestVersion = new Version(newVersionInfo.Version);
 
-                if (currentVersion.CompareTo(latestVersion) < 0)
+                if (currentVersion.CompareTo(latestVersion) < 0 || (arguments.Length > 1 && arguments[1] == "reinstall"))
                 {
+
+                    CloseRunningProcesses("FMinecraft Launcher.exe");
                     await UpdateApplicationAsync(newVersionInfo);
                 }
                 else
@@ -88,7 +91,7 @@ namespace FMinecraft_Updater
 
             Hide();
             Process.Start(Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "FMinecraft App Registrar.exe")).WaitForExit();
-
+            Process.Start(Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "FMinecraft Launcher.exe"));
             ExitApplication();
         }
 
@@ -100,9 +103,7 @@ namespace FMinecraft_Updater
 
         private void HandleException(Exception ex)
         {
-            Process.Start(Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "FMinecraft Launcher.exe"));
             isFinish = true;
-            Clipboard.SetText(ex.Message);
             Application.Exit();
         }
 
