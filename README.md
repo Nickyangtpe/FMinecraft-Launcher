@@ -25,7 +25,7 @@
 ## 安裝指南
 ![螢幕擷取畫面 2024-08-12 164430](https://github.com/user-attachments/assets/da0e810f-36fd-4237-aa59-4e863b472056)
 
-1. **下載**：從 [釋出頁面](https://github.com/Nickyangtpe/FMinecraft-Launcher/releases) 下載最新版本的 FMinecraft Launcher。
+1. **下載**：從 [釋出頁面](https://github.com/Nickyangtpe/FMinecraft-Launcher/releases) 下載最新版本的 FMinecraft Launcher installer。
 2. **執行安裝程式**：按照安裝程式中的指示完成安裝。
 3. **啟動**：打開 FMinecraft Launcher，配置您的設置和配置檔案，然後開始遊玩 Minecraft！
 
