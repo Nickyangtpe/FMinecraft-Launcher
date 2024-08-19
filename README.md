@@ -29,8 +29,7 @@
 2. **執行安裝程式**：按照安裝程式中的指示完成安裝。
 3. **啟動**：打開 FMinecraft Launcher，配置您的設置和配置檔案，然後開始遊玩 Minecraft！
 
-
-![教學](https://github.com/user-attachments/assets/88924f49-3d0e-4a93-bb8a-722a75bb9b30)
+https://github.com/user-attachments/assets/8617b2e1-0232-4cf7-9772-20ec76cb24aa
 
 
 ## 使用說明
