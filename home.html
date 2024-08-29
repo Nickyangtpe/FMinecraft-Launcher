@@ -1,0 +1,212 @@
+<html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="https://upload.cc/i1/2024/08/29/mn9se7.png" type="image/png">
+<title>FMinecraft Launcher - 免費簡單的Minecraft啟動器</title>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: 'Minecraft', Arial, sans-serif;
+        background-color: #111;
+        color: #fff;
+        overflow-x: hidden;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    header {
+        background-color: #2c2c2c;
+        padding: 20px 0;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .logo {
+        font-size: 2.5em;
+        font-weight: bold;
+        text-shadow: 2px 2px #000;
+    }
+    .logo span {
+        color: #5af;
+    }
+    nav {
+        margin-top: 20px;
+    }
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        margin-right: 20px;
+        transition: color 0.3s ease;
+    }
+    nav a:hover {
+        color: #5af;
+    }
+    .hero {
+        background: url('https://websim.freeminecraftlauncher.com/images/minecraft-bg.jpg') no-repeat center center;
+        background-size: cover;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.5);
+    }
+    .hero-content {
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+    .hero h1 {
+        font-size: 3em;
+        margin-bottom: 20px;
+    }
+    .cta-button {
+        display: inline-block;
+        background-color: #5af;
+        color: #fff;
+        padding: 15px 30px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 1.2em;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .cta-button:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(90,255,255,0.3);
+    }
+    .features {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 50px;
+    }
+    .feature {
+        text-align: center;
+        padding: 20px;
+        background-color: #2c2c2c;
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+    }
+    .feature:hover {
+        transform: translateY(-10px);
+    }
+    .feature i {
+        font-size: 3em;
+        margin-bottom: 20px;
+        color: #5af;
+    }
+    footer {
+        background-color: #2c2c2c;
+        text-align: center;
+        padding: 20px 0;
+        margin-top: 50px;
+    }
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+        100% { transform: translateY(0px); }
+    }
+    .floating-block {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background-color: #5af;
+        opacity: 0.7;
+        animation: float 4s infinite ease-in-out;
+    }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">F<span>Minecraft</span> Launcher</div>
+            <nav>
+                <a href="home">首頁</a>
+                <a href="features">功能</a>
+                <a href="download">下載</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="floating-block" style="top: 10%; left: 10%;"></div>
+        <div class="floating-block" style="top: 30%; right: 20%;"></div>
+        <div class="floating-block" style="bottom: 15%; left: 30%;"></div>
+        <div class="hero-content">
+            <h1>簡單、免費的Minecraft啟動器</h1>
+            <a href="download" class="cta-button">立即下載</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="features" id="features">
+            <div class="feature">
+                <i class="fas fa-bolt"></i>
+                <h2>簡單啟動</h2>
+                <p>只需要點及您的版本就能啟動遊戲</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-lock"></i>
+                <h2>安全可靠</h2>
+                <p>本軟件完全沒有病毒或後門，安全可靠。</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-sync"></i>
+                <h2>自動更新</h2>
+                <p>自動檢測並下載最新版本，無需手動操作</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 FMinecraft Launcher. 版權所有。</p>
+    </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    const floatingBlocks = document.querySelectorAll('.floating-block');
+    
+    floatingBlocks.forEach((block, index) => {
+        block.style.animationDelay = `${index * 0.5}s`;
+    });
+
+    const ctaButton = document.querySelector('.cta-button');
+    ctaButton.addEventListener('mouseover', () => {
+        ctaButton.style.backgroundColor = '#7bf';
+    });
+    ctaButton.addEventListener('mouseout', () => {
+        ctaButton.style.backgroundColor = '#5af';
+    });
+
+    const features = document.querySelectorAll('.feature');
+    features.forEach(feature => {
+        feature.addEventListener('mouseover', () => {
+            feature.style.backgroundColor = '#3c3c3c';
+        });
+        feature.addEventListener('mouseout', () => {
+            feature.style.backgroundColor = '#2c2c2c';
+        });
+    });
+
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+            header.style.backgroundColor = 'rgba(44, 44, 44, 0.9)';
+        } else {
+            header.style.backgroundColor = '#2c2c2c';
+        }
+    });
+});
+</script>
+</body>
+</html>

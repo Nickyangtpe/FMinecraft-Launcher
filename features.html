@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FMinecraft Launcher - 功能介紹</title>
+    <link rel="icon" href="https://upload.cc/i1/2024/08/29/mn9se7.png" type="image/png">
+    <style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        font-family: 'Minecraft', Arial, sans-serif;
+        background-color: #111;
+        color: #fff;
+        overflow-x: hidden;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    header {
+        background-color: #2c2c2c;
+        padding: 20px 0;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        position: fixed;
+        width: 100%;
+        z-index: 1000;
+    }
+    .logo {
+        font-size: 2em;
+        font-weight: bold;
+        text-shadow: 2px 2px #000;
+    }
+    .logo span {
+        color: #5af;
+    }
+    nav {
+        margin-top: 10px;
+    }
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        margin-right: 20px;
+        transition: color 0.3s ease;
+    }
+    nav a:hover {
+        color: #5af;
+    }
+    .features-hero {
+        background: url('https://websim.freeminecraftlauncher.com/images/minecraft-features-bg.jpg') no-repeat center center;
+        background-size: cover;
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        margin-top: 80px;
+    }
+    .features-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.6);
+    }
+    .features-hero h1 {
+        font-size: 3em;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+    }
+    .feature-card {
+        background-color: #2c2c2c;
+        border-radius: 10px;
+        padding: 30px;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(90,255,255,0.2);
+    }
+    .feature-icon {
+        font-size: 3em;
+        color: #5af;
+        margin-bottom: 20px;
+    }
+    .feature-title {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+    }
+    .feature-description {
+        font-size: 1em;
+        line-height: 1.6;
+    }
+    footer {
+        background-color: #2c2c2c;
+        text-align: center;
+        padding: 20px 0;
+        margin-top: 50px;
+    }
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+    .pulse {
+        animation: pulse 2s infinite;
+    }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">F<span>Minecraft</span> Launcher</div>
+            <nav>
+                <a href="/home">首頁</a>
+                <a href="/features">功能</a>
+                <a href="/download">下載</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="features-hero">
+        <h1>功能介紹</h1>
+    </section>
+
+    <div class="container">
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon pulse"><i class="fas fa-bolt"></i></div>
+                <h2 class="feature-title">簡單啟動</h2>
+                <p class="feature-description">只需要點及您的版本就能啟動遊戲!</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon pulse"><i class="fas fa-lock"></i></div>
+                <h2 class="feature-title">安全可靠</h2>
+                <p class="feature-description">本軟件完全沒有病毒或後門，安全可靠。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon pulse"><i class="fas fa-sync"></i></div>
+                <h2 class="feature-title">自動更新</h2>
+                <p class="feature-description">智能檢測並自動下載最新版本，讓您永遠保持最新狀態。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon pulse"><i class="fas fa-cubes"></i></div>
+                <h2 class="feature-title">無廣告管理</h2>
+                <p class="feature-description">完全不用擔心會有任何廣告，他是完全免費乾淨的。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon pulse"><i class="fas fa-paint-brush"></i></div>
+                <h2 class="feature-title">統計大小</h2>
+                <p class="feature-description">他會顯示已經使用的大小，不必再自己查了。</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon pulse"><i class="fas fa-users"></i></div>
+                <h2 class="feature-title">自訂名稱</h2>
+                <p class="feature-description">您能使用各種名稱在Minecraft遊戲中遊玩。</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 FMinecraft Launcher. 版權所有。</p>
+    </footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    const featureCards = document.querySelectorAll('.feature-card');
+    
+    featureCards.forEach(card => {
+        card.addEventListener('mouseover', () => {
+            card.querySelector('.feature-icon').style.color = '#7bf';
+        });
+        card.addEventListener('mouseout', () => {
+            card.querySelector('.feature-icon').style.color = '#5af';
+        });
+    });
+
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+            header.style.backgroundColor = 'rgba(44, 44, 44, 0.9)';
+        } else {
+            header.style.backgroundColor = '#2c2c2c';
+        }
+    });
+
+    // 添加滾動動畫
+    function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+
+    function handleScroll() {
+        featureCards.forEach(card => {
+            if (isInViewport(card)) {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }
+        });
+    }
+
+    // 初始設置
+    featureCards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(50px)';
+        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    });
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // 初始調用以處理已經在視口中的元素
+});
+</script>
+</body>
+</html>
