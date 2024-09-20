@@ -8,3 +8,13 @@ C:\Users\nick yang2\source\repos\Uninstall FMinecraft Launcher\Uninstall FMinecr
 C:\Users\nick yang2\source\repos\Uninstall FMinecraft Launcher\Uninstall FMinecraft Launcher\obj\Debug\Uninstall FMinecraft Launcher.csproj.CoreCompileInputs.cache
 C:\Users\nick yang2\source\repos\Uninstall FMinecraft Launcher\Uninstall FMinecraft Launcher\obj\Debug\Uninstall FMinecraft Launcher.exe
 C:\Users\nick yang2\source\repos\Uninstall FMinecraft Launcher\Uninstall FMinecraft Launcher\obj\Debug\Uninstall FMinecraft Launcher.pdb
+C:\Users\Oscar\Downloads\FMinecraft-Launcher-main\FMinecraft-Launcher-main\Uninstall FMinecraft Launcher\Uninstall FMinecraft Launcher\bin\Debug\Uninstall FMinecraft Launcher.exe.config
+C:\Users\Oscar\Downloads\FMinecraft-Launcher-main\FMinecraft-Launcher-main\Uninstall FMinecraft Launcher\Uninstall FMinecraft Launcher\bin\Debug\Uninstall FMinecraft Launcher.exe
+C:\Users\Oscar\Downloads\FMinecraft-Launcher-main\FMinecraft-Launcher-main\Uninstall FMinecraft Launcher\Uninstall FMinecraft Launcher\bin\Debug\Uninstall FMinecraft Launcher.pdb
+C:\Users\Oscar\Downloads\FMinecraft-Launcher-main\FMinecraft-Launcher-main\Uninstall FMinecraft Launcher\Uninstall FMinecraft Launcher\obj\Debug\Uninstall FMinecraft Launcher.csproj.AssemblyReference.cache
+C:\Users\Oscar\Downloads\FMinecraft-Launcher-main\FMinecraft-Launcher-main\Uninstall FMinecraft Launcher\Uninstall FMinecraft Launcher\obj\Debug\Uninstall_FMinecraft_Launcher.Form1.resources
+C:\Users\Oscar\Downloads\FMinecraft-Launcher-main\FMinecraft-Launcher-main\Uninstall FMinecraft Launcher\Uninstall FMinecraft Launcher\obj\Debug\Uninstall_FMinecraft_Launcher.Properties.Resources.resources
+C:\Users\Oscar\Downloads\FMinecraft-Launcher-main\FMinecraft-Launcher-main\Uninstall FMinecraft Launcher\Uninstall FMinecraft Launcher\obj\Debug\Uninstall FMinecraft Launcher.csproj.GenerateResource.cache
+C:\Users\Oscar\Downloads\FMinecraft-Launcher-main\FMinecraft-Launcher-main\Uninstall FMinecraft Launcher\Uninstall FMinecraft Launcher\obj\Debug\Uninstall FMinecraft Launcher.csproj.CoreCompileInputs.cache
+C:\Users\Oscar\Downloads\FMinecraft-Launcher-main\FMinecraft-Launcher-main\Uninstall FMinecraft Launcher\Uninstall FMinecraft Launcher\obj\Debug\Uninstall FMinecraft Launcher.exe
+C:\Users\Oscar\Downloads\FMinecraft-Launcher-main\FMinecraft-Launcher-main\Uninstall FMinecraft Launcher\Uninstall FMinecraft Launcher\obj\Debug\Uninstall FMinecraft Launcher.pdb

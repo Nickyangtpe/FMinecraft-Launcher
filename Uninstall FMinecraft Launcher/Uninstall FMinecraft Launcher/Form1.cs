@@ -59,13 +59,14 @@ namespace Uninstall_FMinecraft_Launcher
                 DeleteRegistryKey(appPathsRegistryPath2);
                 DeleteRegistryKey(appPathsRegistryPath3);
 
-
+                MessageBox.Show("Uninstalled successfully.", "FMinecraft Launcher",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                
                 // 在完成所有操作后删除自身
                 ScheduleSelfDeletion(installLocation);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("卸载过程中发生错误: " + ex.Message);
+                MessageBox.Show("An error occurred during uninstallation: " + ex.Message);
                 Application.Exit();
             }
         }
@@ -92,7 +93,7 @@ namespace Uninstall_FMinecraft_Launcher
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"無法刪除註冊表項 {registryPath}: {ex.Message}");
+                Console.WriteLine($"Unable to delete registry key {registryPath}: {ex.Message}");
             }
         }
 
@@ -108,7 +109,7 @@ namespace Uninstall_FMinecraft_Launcher
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"無法關閉進程 {process.ProcessName}: {ex.Message}");
+                    Console.WriteLine($"Unable to close process {process.ProcessName}: {ex.Message}");
                 }
             }
         }
