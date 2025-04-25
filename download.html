@@ -1,4 +1,5 @@
-<html><head>
+<html>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://upload.cc/i1/2024/08/29/mn9se7.png" type="image/png">
@@ -108,6 +109,38 @@
             opacity: 0.3;
             animation: float 4s infinite ease-in-out;
         }
+        .version-notification {
+            position: fixed;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ff6b00;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            z-index: 1100;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            animation: pulse 1.5s infinite alternate;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .close-notification {
+            cursor: pointer;
+            font-size: 1.5em;
+            margin-left: 15px;
+            color: white;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        .close-notification:hover {
+            opacity: 1;
+        }
+        @keyframes pulse {
+            0% { transform: translateX(-50%) scale(1); }
+            100% { transform: translateX(-50%) scale(1.05); }
+        }
     </style>
 </head>
 <body>
@@ -165,76 +198,90 @@
     <div class="floating-cube" style="top: 50%; right: 10%;"></div>
     <div class="floating-cube" style="bottom: 15%; left: 15%;"></div>
 
+    <div class="version-notification">
+        🎉 FMinecraft 第二代啟動器已推出！ <a href="https://github.com/Nickyangtpe/FMinecraft-Launcher-v2/releases/download/Installer_1.0.0.0/Installer.exe" style="color: white;">立即下載</a>
+        <span class="close-notification">&times;</span>
+    </div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', (event) => {
-    const floatingCubes = document.querySelectorAll('.floating-cube');
-    const downloadButton = document.querySelector('.download-button');
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const floatingCubes = document.querySelectorAll('.floating-cube');
+        const downloadButton = document.querySelector('.download-button');
 
-    // Animate floating cubes
-    floatingCubes.forEach((cube, index) => {
-        cube.style.animationDelay = `${index * 0.5}s`;
-    });
-
-    // Parallax effect for floating cubes
-    window.addEventListener('mousemove', (e) => {
-        const mouseX = e.clientX / window.innerWidth;
-        const mouseY = e.clientY / window.innerHeight;
-
-        floatingCubes.forEach(cube => {
-            const cubeX = (mouseX - 0.5) * 20;
-            const cubeY = (mouseY - 0.5) * 20;
-            cube.style.transform = `translate(${cubeX}px, ${cubeY}px)`;
+        // Animate floating cubes
+        floatingCubes.forEach((cube, index) => {
+            cube.style.animationDelay = `${index * 0.5}s`;
         });
-    });
 
-    // Download button hover effect
-    downloadButton.addEventListener('mouseover', () => {
-        downloadButton.style.transform = 'translateY(-5px) scale(1.05)';
-    });
-    downloadButton.addEventListener('mouseout', () => {
-        downloadButton.style.transform = 'translateY(0) scale(1)';
-    });
+        // Parallax effect for floating cubes
+        window.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
 
-    // Animate stats on scroll
-    const stats = document.querySelectorAll('.stat-number');
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
+            floatingCubes.forEach(cube => {
+                const cubeX = (mouseX - 0.5) * 20;
+                const cubeY = (mouseY - 0.5) * 20;
+                cube.style.transform = `translate(${cubeX}px, ${cubeY}px)`;
+            });
+        });
 
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const target = entry.target;
-                if (target.innerText.includes('+')) {
-                    const finalNumber = parseInt(target.innerText);
-                    animateNumber(target, 0, finalNumber, 2000, true);
-                } else {
-                    target.style.opacity = 1;
+        // Download button hover effect
+        downloadButton.addEventListener('mouseover', () => {
+            downloadButton.style.transform = 'translateY(-5px) scale(1.05)';
+        });
+        downloadButton.addEventListener('mouseout', () => {
+            downloadButton.style.transform = 'translateY(0) scale(1)';
+        });
+
+        // Animate stats on scroll
+        const stats = document.querySelectorAll('.stat-number');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+                    if (target.innerText.includes('+')) {
+                        const finalNumber = parseInt(target.innerText);
+                        animateNumber(target, 0, finalNumber, 2000, true);
+                    } else {
+                        target.style.opacity = 1;
+                    }
+                    observer.unobserve(target);
                 }
-                observer.unobserve(target);
-            }
-        });
-    }, observerOptions);
+            });
+        }, observerOptions);
 
-    stats.forEach(stat => observer.observe(stat));
+        stats.forEach(stat => observer.observe(stat));
 
-    function animateNumber(element, start, end, duration, addPlus) {
-        let current = start;
-        const range = end - start;
-        const increment = end > start ? 1 : -1;
-        const stepTime = Math.abs(Math.floor(duration / range));
-        const timer = setInterval(() => {
-            current += increment;
-            element.innerText = current.toLocaleString() + (addPlus ? '+' : '');
-            if (current == end) {
-                clearInterval(timer);
-            }
-        }, stepTime);
-    }
-});
+        function animateNumber(element, start, end, duration, addPlus) {
+            let current = start;
+            const range = end - start;
+            const increment = end > start ? 1 : -1;
+            const stepTime = Math.abs(Math.floor(duration / range));
+            const timer = setInterval(() => {
+                current += increment;
+                element.innerText = current.toLocaleString() + (addPlus ? '+' : '');
+                if (current == end) {
+                    clearInterval(timer);
+                }
+            }, stepTime);
+        }
+
+        // Add notification dismissal
+        const notification = document.querySelector('.version-notification');
+        const closeBtn = document.querySelector('.close-notification');
+        if (notification && closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                notification.style.display = 'none';
+            });
+        }
+    });
 </script>
 </body>
 </html>
